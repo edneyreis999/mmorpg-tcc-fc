@@ -1,5 +1,5 @@
 {
-  "name": "basic-nodejs-environment",
+  "name": "basic-mmorpg-server",
   "version": "1.0.0",
   "description": "My minimalistic Node.js development environment seamlessly integrated with Docker and VSCode.",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.2.0",
     "@swc/cli": "^0.1.62",
     "@swc/core": "^1.3.96",
     "@swc/jest": "^0.2.29",
