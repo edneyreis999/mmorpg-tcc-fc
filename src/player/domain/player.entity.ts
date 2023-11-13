@@ -2,6 +2,7 @@ import { Entity } from "../../shared/domain/entity";
 import { EntityValidationError } from "../../shared/domain/validators/validation.error";
 import { ValueObject } from "../../shared/domain/value-object";
 import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
+import { PlayerFakeBuilder } from "./player-fake.builder";
 import { PlayerValidatorFactory } from "./player.validator";
 
 export type PlayerConstructorProps = {
@@ -77,6 +78,10 @@ export class Player extends Entity {
 
     public get createdAt(): Date {
         return this._createdAt;
+    }
+
+    static fake() {
+        return PlayerFakeBuilder;
     }
 
     toJSON() {

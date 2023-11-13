@@ -1,8 +1,9 @@
-import { faker } from '@faker-js/faker';
+import { Chance } from 'chance';
 import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
 import { Player } from "./player.entity";
 
 describe("Player Unit Tests", () => {
+    const chance = new Chance();
     let validateSpy: any;
     beforeEach(() => {
         validateSpy = jest.spyOn(Player, "validate");
@@ -17,7 +18,7 @@ describe("Player Unit Tests", () => {
         });
 
         test("should create a player with all values", () => {
-            const nickName = faker.person.firstName();
+            const nickName = chance.string({ length: 10 });
             const created_at = new Date();
             const player = new Player({
                 playerId: new Uuid(),
@@ -31,7 +32,7 @@ describe("Player Unit Tests", () => {
             expect(player.createdAt).toBeInstanceOf(Date);
         });
         test("should create a player with display name", () => {
-            const nickName = faker.person.firstName();
+            const nickName = chance.string({ length: 10 });
             const player = new Player({
                 displayName: nickName,
             });
@@ -54,7 +55,7 @@ describe("Player Unit Tests", () => {
         });
 
         test("should create a player with display name", () => {
-            const nickName = faker.person.firstName();
+            const nickName = chance.string({ length: 10 });
             const player = Player.create({
                 displayName: nickName,
             });
@@ -66,7 +67,7 @@ describe("Player Unit Tests", () => {
         });
 
         test("should create a player with isActive", () => {
-            const nickName = faker.person.firstName();
+            const nickName = chance.string({ length: 10 });
             const player = Player.create({
                 displayName: nickName,
                 isActive: false,
@@ -98,7 +99,7 @@ describe("Player Unit Tests", () => {
     });
 
     test("should change name", () => {
-        const nickName = faker.person.firstName();
+        const nickName = chance.string({ length: 10 });
         const player = Player.create({
             displayName: "some wrong name",
         });
@@ -124,7 +125,7 @@ describe("Player Unit Tests", () => {
     });
 
     it("should change display name", () => {
-        const nickName = faker.person.firstName();
+        const nickName = chance.string({ length: 10 });
         const player = Player.create({
             displayName: "some wrong name",
         });
